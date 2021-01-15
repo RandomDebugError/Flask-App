@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>POSTS</title>
+{% endblock %}
+
+{% block body %}
+
+<style>
+    body {
+      background-image: url('https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/04/tokyo-ghoul-kaneki-white-hair-mask-1400x700.jpg?q=50&fit=crop&w=740&h=370');
+    }
+    </style>
+ <h1>All Posts</h1>
+
+ <main role="main">
+    <div class="jumbotron">
+      <div class="col-sm-8 mx-auto">
+        <hr>
+        <h2>Create New Blog Post:</h2>
+        <form action='/posts' method='POST'>
+            Title: <input type='text' name ='title' id='title'>
+            <br>
+            Post: <input type='text' name='content' id='content'>
+            <br>
+            Author: <input type='text' name='author' id='author'>
+            <br>
+            <input type='submit' value='Post'>
+        </form>
+        <hr>
+        
+         {% for post in posts %}
+            <h2>{{ post.title }}</h2>
+            {% if  post.author %}
+                <h3>By: {{ post.author }}</h3>
+            {% else %}
+            <h3>By: Author Unkown</h3>
+            {% endif %}
+        
+            <p> {{ post.content }}</p>
+            <a href='/posts/delete/{{post.id}}'>Delete</a>
+            <a href='/posts/edit/{{post.id}}'>Edit</a>
+            <hr>
+        
+      </div>
+    </div>
+  </main>
+ 
+ {% endfor %}
+{% endblock %}

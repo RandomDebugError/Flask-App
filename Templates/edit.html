@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit</title>
+{% endblock %}
+
+{% block body %}
+
+<style>
+    body {
+      background-image: url('https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/04/tokyo-ghoul-kaneki-white-hair-mask-1400x700.jpg?q=50&fit=crop&w=740&h=370');
+    }
+    </style>
+    
+<h1>Editing Post</h1>
+
+ <hr>
+<h2>Edit:</h2>
+<form action='/posts/edit/{{post.id}}' method='POST'>
+    Title: <input type='text' name ='title' id='title' value="{{post.title}}">
+    <br>
+    Post: <input type='text' name='content' id='content' value="{{post.content}}">
+    <br>
+    Author: <input type='text' name='author' id='author' value="{{post.author}}">
+    <br>
+    <input type='submit' value='Save'>
+</form>
+<hr>
+{% endblock %}
